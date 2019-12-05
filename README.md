@@ -13,7 +13,7 @@ The image exposes:
 **Pull the image using docker:**
 
 ```
-docker pull trontools/quickstart
+docker pull earthengineering/quickstart
 ```
 
 **Run the container:**
@@ -22,8 +22,8 @@ docker pull trontools/quickstart
 docker run -it \
   -p 9090:9090 \
   --rm \
-  --name tron \
-  trontools/quickstart
+  --name earth \
+  earthengineering/quickstart
 ```
 
 Notice the `--rm` option automatically removes the container after it exits. This is very important because the container cannot be restarted, it MUST be run from scratch to correctly configure the environment.
@@ -31,7 +31,7 @@ Notice the `--rm` option automatically removes the container after it exits. Thi
 **Verify the image is running correctly:**
 
 ```
-docker exec -it tron ps aux
+docker exec -it earth ps aux
 ```
 
 You should see something like this:
@@ -76,12 +76,12 @@ module.exports = {
 
 ### EarthWeb configuration
 
-Instantiate tronWeb as in the following example:
+Instantiate earthWeb as in the following example:
 
 ```
-const EarthWeb = require('tronweb')
+const EarthWeb = require('earthweb')
 
-const tronWeb = new EarthWeb(
+const earthWeb = new EarthWeb(
     "http://127.0.0.1:9090",
     "http://127.0.0.1:9090",
     "http://127.0.0.1:9090",
@@ -98,16 +98,16 @@ Earth Quickstart sets up accounts to be used for tests with EarthBox 2.1+ (10 ac
 Available Accounts
 ==================
 
-(0) TJdDmJVYa9TcMJvCc9WsdaEXEYgeJrGVPq (100000 TRX)
-(1) TNmLX3rJZNdq7kxgxs1y39FP3hp8LWHLUX (100000 TRX)
-(2) TASrJ76QANNPRgdDHHikWWApQzxh3HPku4 (100000 TRX)
-(3) TNkzaPqNipxKbU5ecUZz7P7UdejiE82zc7 (100000 TRX)
-(4) TWCcS3cAVeNWhX1J6LHMEsEkWGq43t4EXc (100000 TRX)
-(5) TW1QH88er9UqUKhoHLdm8dQTG2NsYU6C2h (100000 TRX)
-(6) TKJu6vpKAknBwzovm5NiBZ1j69nWmeXGyw (100000 TRX)
-(7) TQUddX2gBhGV7d33a2kZchVsPuWLdZBeXY (100000 TRX)
-(8) TXjdePoR6ZRfBeiaZ9QoUyGwdHGhTPdy6x (100000 TRX)
-(9) TGJnVM3TcvsKaDL3zpNm92gw2YHrPx8s3Y (100000 TRX)
+(0) TJdDmJVYa9TcMJvCc9WsdaEXEYgeJrGVPq (100000 EARTH)
+(1) TNmLX3rJZNdq7kxgxs1y39FP3hp8LWHLUX (100000 EARTH)
+(2) TASrJ76QANNPRgdDHHikWWApQzxh3HPku4 (100000 EARTH)
+(3) TNkzaPqNipxKbU5ecUZz7P7UdejiE82zc7 (100000 EARTH)
+(4) TWCcS3cAVeNWhX1J6LHMEsEkWGq43t4EXc (100000 EARTH)
+(5) TW1QH88er9UqUKhoHLdm8dQTG2NsYU6C2h (100000 EARTH)
+(6) TKJu6vpKAknBwzovm5NiBZ1j69nWmeXGyw (100000 EARTH)
+(7) TQUddX2gBhGV7d33a2kZchVsPuWLdZBeXY (100000 EARTH)
+(8) TXjdePoR6ZRfBeiaZ9QoUyGwdHGhTPdy6x (100000 EARTH)
+(9) TGJnVM3TcvsKaDL3zpNm92gw2YHrPx8s3Y (100000 EARTH)
 
 Private Keys
 ==================
@@ -139,9 +139,9 @@ Example:
 docker run -it \
   -p 9090:9090 \
   --rm \
-  --name tron \
+  --name earth \
   -e "accounts=20" \
-  trontools/quickstart
+  earthengineering/quickstart
 ```
 
 **List of options:**
@@ -149,7 +149,7 @@ docker run -it \
 - `accounts=12` sets the number of generated accounts
 - `useDefaultPrivateKey=true` tells Quickstart to use the default account as `accounts[0]`
 - `mnemonic=wrong bit chicken kitchen rat` uses a specified mnemonic
-- `defaultBalance=100000` sets the initial balance for the generated accounts (in the example to 100,000 TRX)
+- `defaultBalance=100000` sets the initial balance for the generated accounts (in the example to 100,000 EARTH)
 - `seed=ushwe63hgeWUS` sets the seed to be used to generate the mnemonic (if none is passed)
 - `hdPath=m/44'/60'/0'/0` sets a custom bit39 hdPath
 - `formatJson=true` formats the output
@@ -163,12 +163,12 @@ To pre-approve, for example, `getMultiSignFee` and `allowMultiSign`, you can run
 docker run -it \
   -p 9090:9090 \
   --rm \
-  --name tron \
+  --name earth \
   -e "preapprove=multiSignFee:1,allowMultiSign:1" \
-  trontools/quickstart
+  earthengineering/quickstart
 ```
 
-For a complete list of option proposals check out https://api.trongrid.io/wallet/getchainparameters. Note that you remove the "get" part of this chain parameter and lowercase the first character. This allows you to directly edit these parameters.
+For a complete list of option proposals check out https://www.earth.engineering. Note that you remove the "get" part of this chain parameter and lowercase the first character. This allows you to directly edit these parameters.
 
 #### Available accounts
 
@@ -196,7 +196,7 @@ If your test requires additional accounts, use the following code to generate ne
 
 ```js
 async function newTestAccounts(amount) => {
-    return await tronWeb.fullNode.request('/admin/temporary-accounts-generation?accounts=' + amount);
+    return await earthWeb.fullNode.request('/admin/temporary-accounts-generation?accounts=' + amount);
 }
 
 async function getTestAccounts() => {
@@ -205,12 +205,12 @@ async function getTestAccounts() => {
         hex: [],
         pks: []
     }
-    const accountsJson = await tronWeb.fullNode.request('/admin/accounts-json');
+    const accountsJson = await earthWeb.fullNode.request('/admin/accounts-json');
     accounts.pks = accountsJson.more[accountsJson.more.length - 1].privateKeys
     for (let i = 0; i < accounts.pks.length; i++) {
-        let addr = tronWeb.address.fromPrivateKey(accounts.pks[i]);
+        let addr = earthWeb.address.fromPrivateKey(accounts.pks[i]);
         accounts.b58.push(addr);
-        accounts.hex.push(tronWeb.address.toHex(addr));
+        accounts.hex.push(earthWeb.address.toHex(addr));
     }
     return accounts;
 }
@@ -229,9 +229,9 @@ Example use of `accounts.json`:
 if [[ ! -d "accounts-data" ]]; then mkdir accounts-data; fi
 
 docker run -it -p 9090:9090 \
-  --name tron \
+  --name earth \
   -v $PWD/accounts-data:/config \
-  trontools/quickstart
+  earthengineering/quickstart
 ```
 
 If `accounts-data/accounts.json` exists, Earth Quickstart will use it each time it runs. If you need specific addresses, you can edit `accounts.json`, put your own private keys in the `privateKeys` array, and run the container.
@@ -258,19 +258,19 @@ curl http://127.0.0.1:9090/admin/set-env?showBody=true
 The easiest way to interact with the private network is by using EarthWeb from the container:
 
 ```
-docker exec -it tron ./earthWeb
+docker exec -it earth ./earthWeb
 ```
 
 It opens a console with a `earthWeb` instance ready to use. Run any command — for example: `earthWeb.toHex("some")` — to verify that it works.
 
 ### What about RPC?
 
-If you are running [Earth Wallet-cli](https://github.com/tronprotocol/wallet-cli) or any other tool which connects to the private network via RPC, you can just expose the ports . . . and voila!
+If you are running [Earth Wallet-cli](https://github.com/earthengineering/wallet-cli) or any other tool which connects to the private network via RPC, you can just expose the ports . . . and voila!
 
 ```
 docker run -it -p 50051:50051 -p 50052:50052 \
   --name earth \
-  trontools/quickstart
+  earthengineering/quickstart
 ```
 
 ### Known issues
@@ -281,7 +281,7 @@ Running EarthBox can put a lot of stress on the local network. If the FullNode i
 
 ### Latest version is `2.0.22`
 
-To be updated, take a look at https://hub.docker.com/r/trontools/quickstart/tags/
+To be updated, take a look at https://hub.docker.com/r/earthengineering/quickstart/tags/
 
 You can see which version you currently running executing
 
@@ -296,3 +296,37 @@ curl localhost:9090/wallet/getnodeinfo
 ```
 
 and look for `codeVersion`.
+
+---
+
+Firist install `earthbox` from npm.
+
+```
+npm install earthbox -g
+```
+
+Next clone the quickstart
+
+```
+git clone https://github.com/EarthEngineering/docker-earth-quickstart.git
+```
+
+Run the build script to have docker build an image
+
+```
+./bin/build.sh
+```
+
+Fire up your own private EARTH network!
+
+```
+./bin/run-simple.sh
+```
+
+This will generate 10 Accounts and give them each 10,000 regtest EARTH.
+
+![Addresses](https://i.imgur.com/Zt7cNPE.png "Addresses")
+
+It will also show the private key as well as the hd path and mnemonic in case you want to recreate these addresses later.
+
+![Addresses](https://i.imgur.com/NEVHF9W.png "Addresses")
