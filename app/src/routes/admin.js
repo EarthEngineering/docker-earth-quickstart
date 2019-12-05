@@ -5,7 +5,7 @@ const wait = require("../utils/wait")
 const _ = require("lodash")
 const accountsGeneration = require("../utils/accountsGeneration")
 
-const tronWebBuilder = require("../utils/earthWebBuilder")
+const earthWebBuilder = require("../utils/earthWebBuilder")
 const config = require("../config")
 
 let testingAccounts
@@ -20,15 +20,15 @@ function flatAccounts() {
 }
 
 async function getBalances() {
-  const tronWeb = tronWebBuilder()
+  const earthWeb = earthWebBuilder()
 
   const balances = []
   let k = 0
   let privateKeys = flatAccounts()
 
   for (let i = 0; i < privateKeys.length; i++) {
-    let address = tronWeb.address.fromPrivateKey(privateKeys[i])
-    balances[k++] = await tronWeb.trx.getBalance(address)
+    let address = earthWeb.address.fromPrivateKey(privateKeys[i])
+    balances[k++] = await earthWeb.trx.getBalance(address)
   }
   return Promise.resolve(balances)
 }
@@ -44,7 +44,7 @@ async function verifyAccountsBalance(options) {
     options = _.defaults(options, env)
   }
 
-  const tronWeb = tronWebBuilder()
+  const earthWeb = earthWebBuilder()
 
   console.log(
     chalk.gray(
@@ -64,18 +64,18 @@ async function verifyAccountsBalance(options) {
   while (true) {
     console.log(chalk.gray(`(${count++}) Waiting for receipts...`))
     for (let i = 0; i < privateKeys.length; i++) {
-      let address = tronWeb.address.fromPrivateKey(privateKeys[i])
-      if (privateKeys[i] !== tronWeb.defaultPrivateKey && !trxSent[address]) {
-        let result = await tronWeb.trx.sendTransaction(
+      let address = earthWeb.address.fromPrivateKey(privateKeys[i])
+      if (privateKeys[i] !== earthWeb.defaultPrivateKey && !trxSent[address]) {
+        let result = await earthWeb.trx.sendTransaction(
           address,
-          tronWeb.toSun(amount)
+          earthWeb.toSun(amount)
         )
         if (result.result) {
-          console.log(chalk.gray(`Sending ${amount} TRX to ${address}`))
+          console.log(chalk.gray(`Sending ${amount} EARTH to ${address}`))
           trxSent[address] = true
         }
       } else if (!balances[i]) {
-        let balance = await tronWeb.trx.getBalance(address)
+        let balance = await earthWeb.trx.getBalance(address)
         if (balance > 0) {
           balances[i] = balance
           ready++
@@ -90,18 +90,18 @@ async function verifyAccountsBalance(options) {
 }
 
 async function formatAccounts(balances, format) {
-  const tronWeb = tronWebBuilder()
+  const earthWeb = earthWebBuilder()
 
   const privateKeys = flatAccounts()
 
   formattedTestingAccounts = "Available Accounts\n==================\n\n"
   for (let i = 0; i < privateKeys.length; i++) {
-    let address = tronWeb.address.fromPrivateKey(privateKeys[i])
+    let address = earthWeb.address.fromPrivateKey(privateKeys[i])
 
     formattedTestingAccounts += `(${i}) ${
-      format === "hex" ? tronWeb.address.toHex(address) : address
-    } (${tronWeb.fromSun(balances[i])} TRX)\n${
-      format === "all" ? "    " + tronWeb.address.toHex(address) + "\n" : ""
+      format === "hex" ? earthWeb.address.toHex(address) : address
+    } (${earthWeb.fromSun(balances[i])} EARTH)\n${
+      format === "all" ? "    " + earthWeb.address.toHex(address) + "\n" : ""
     }`
   }
 
@@ -189,7 +189,7 @@ router.get("/temporary-accounts-generation", async function(req, res) {
 })
 
 router.get("/", function(req, res) {
-  res.send("Welcome to Tron Quickstart " + require("../../package").version)
+  res.send("Welcome to EARTH Quickstart " + require("../../package").version)
 })
 
 module.exports = router

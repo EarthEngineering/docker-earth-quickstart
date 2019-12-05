@@ -1,13 +1,13 @@
 {
-  "name": "tron-quickstart",
-  "version": "2.0.22",
-  "description": "A minimalist proxy for a Tron private network",
+  "name": "earth-quickstart",
+  "version": "0.1.0",
+  "description": "A minimalist proxy for a EARTH private network",
   "main": "index.js",
-  "repository": "https://github.com/tronprotocol/docker-tron-quickstart",
+  "repository": "https://github.com/earthengineering/docker-earth-quickstart",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Francesco Sullo <francesco@sullo.co>",
+  "author": "Gabriel Cardona <gabriel.earth.engineering@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "bip39": "^2.6.0",
@@ -22,6 +22,6 @@
     "morgan": "^1.9.1",
     "scrypt": "^6.0.3",
     "seedrandom": "^2.4.4",
-    "earthweb": "^0.1.1"
+    "earthweb": "^0.1.4"
   }
 }

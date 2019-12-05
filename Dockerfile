@@ -1,7 +1,7 @@
-# Tron Quickstart
+# EARTH Quickstart
 
 FROM sullof/ubu18jdk8node10redis
-LABEL maintainer="Francesco Sullo <francesco@sullo.co>"
+LABEL maintainer="Gabriel Cardona <gabriel.earth.engineering@gmail.com>"
 
 # Prepare the work directory
 RUN mkdir -p earth/conf

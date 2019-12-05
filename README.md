@@ -1,6 +1,6 @@
-# Tron Quickstart (Docker image)
+# Earth Quickstart (Docker image)
 
-**The purpose of it is to set up a complete private network for Tron development.**
+**The purpose of it is to set up a complete private network for EARTH development.**
 
 The image exposes:
 
@@ -58,7 +58,7 @@ To see the logs of the full node you can execute
 docker exec -it earth tail -f /earth/FullNode/logs/earth.log
 ```
 
-### TronBox 2.1+ configuration
+### EARTHBox 2.1+ configuration
 
 Configure your `earthbox.js` file as:
 
@@ -74,14 +74,14 @@ module.exports = {
 };
 ```
 
-### TronWeb configuration
+### EarthWeb configuration
 
 Instantiate tronWeb as in the following example:
 
 ```
-const TronWeb = require('tronweb')
+const EarthWeb = require('tronweb')
 
-const tronWeb = new TronWeb(
+const tronWeb = new EarthWeb(
     "http://127.0.0.1:9090",
     "http://127.0.0.1:9090",
     "http://127.0.0.1:9090",
@@ -92,7 +92,7 @@ const tronWeb = new TronWeb(
 
 ### Testing
 
-Tron Quickstart sets up accounts to be used for tests with TronBox 2.1+ (10 accounts by default). Once the transactions are mined, the final output is printed out:
+Earth Quickstart sets up accounts to be used for tests with EarthBox 2.1+ (10 accounts by default). Once the transactions are mined, the final output is printed out:
 
 ```
 Available Accounts
@@ -234,7 +234,7 @@ docker run -it -p 9090:9090 \
   trontools/quickstart
 ```
 
-If `accounts-data/accounts.json` exists, Tron Quickstart will use it each time it runs. If you need specific addresses, you can edit `accounts.json`, put your own private keys in the `privateKeys` array, and run the container.
+If `accounts-data/accounts.json` exists, Earth Quickstart will use it each time it runs. If you need specific addresses, you can edit `accounts.json`, put your own private keys in the `privateKeys` array, and run the container.
 
 #### Logging
 
@@ -255,7 +255,7 @@ curl http://127.0.0.1:9090/admin/set-env?showBody=true
 
 ### Interacting with the private network
 
-The easiest way to interact with the private network is by using TronWeb from the container:
+The easiest way to interact with the private network is by using EarthWeb from the container:
 
 ```
 docker exec -it tron ./earthWeb
@@ -265,7 +265,7 @@ It opens a console with a `earthWeb` instance ready to use. Run any command — 
 
 ### What about RPC?
 
-If you are running [Tron Wallet-cli](https://github.com/tronprotocol/wallet-cli) or any other tool which connects to the private network via RPC, you can just expose the ports . . . and voila!
+If you are running [Earth Wallet-cli](https://github.com/tronprotocol/wallet-cli) or any other tool which connects to the private network via RPC, you can just expose the ports . . . and voila!
 
 ```
 docker run -it -p 50051:50051 -p 50052:50052 \
@@ -277,7 +277,7 @@ docker run -it -p 50051:50051 -p 50052:50052 \
 
 **The "SERVER_BUSY" error**
 
-Running TronBox can put a lot of stress on the local network. If the FullNode is busy, it returns the "SERVER_BUSY" error. If it does, just repeat your command.
+Running EarthBox can put a lot of stress on the local network. If the FullNode is busy, it returns the "SERVER_BUSY" error. If it does, just repeat your command.
 
 ### Latest version is `2.0.22`
 
@@ -289,163 +289,10 @@ You can see which version you currently running executing
 docker ps
 ```
 
-If you want also to know which version of JavaTron is used by Tron Quickstart, run
+If you want also to know which version of JavaEarth is used by Earth Quickstart, run
 
 ```
 curl localhost:9090/wallet/getnodeinfo
 ```
 
 and look for `codeVersion`.
-
-### Selected recent history
-
-_Notice that deprecated version will stay here in the history but will be removed from the Docker hub._
-
-**2.0.21**
-
-- Fix hdPath.
-
-**2.0.21**
-
-- Extending the http body size.
-
-**2.0.20**
-
-- Update TronWeb to version 2.8.0 supporting Solidity 0.5.9.
-
-**2.0.19**
-
-- Update TronWeb to version 2.7.4.
-
-**2.0.18**
-
-- Update JavaTron to version 3.6.5.
-- Update TronWeb to version 2.7.3.
-
-**2.0.17**
-
-- Update TronWeb to version 2.6.8.
-
-**2.0.17**
-
-- Update TronWeb to version 2.6.4.
-
-**2.0.16**
-
-- Pre-approve `allowTvmConstantinople` and others.
-
-**2.0.15**
-
-- Upgrade Eventron.
-
-**2.0.14**
-
-- Upgrade JavaTron to version 3.6.
-- Upgrade TronWeb to version 2.5.6.
-
-**2.0.13**
-
-- Remove sleep dependency.
-
-**2.0.12**
-
-- Allow the proxy to accept large JSON files.
-
-**2.0.11**
-
-- Fix minor bug with unsupported APIs.
-
-**2.0.10**
-
-- Update eventron to version 2.2.8.
-- Fix issue with APIs not supported in private networks.
-
-**2.0.9**
-
-- Update eventron to version 2.2.6.
-
-**2.0.8**
-
-- Update TronWeb to 2.3.6.
-- Fix naming issue with JavaTron 3.2 approved proposals.
-
-**2.0.7**
-
-- Support generic pre-approved options.
-
-**2.0.6**
-
-- Disable caching in Eventron.
-
-**2.0.5**
-
-- Pre-approve JavaTron 3.2 proposals.
-
-**2.0.4**
-
-- Fix bug with fullnode not starting correctly.
-
-**2.0.3**
-
-- Fix bug with pre-approved proposals.
-
-**2.0.2**
-
-- Updates to TronGrid v2.2.0
-- Updates to a new BlockParser using less resources
-
-**2.0.1**
-
-- Updates to TronGrid v2.1.1 (better support of sort by timestamps)
-
-**2.0.1**
-
-- Updates to TronGrid v2.1.1 (better support of sort by timestamps)
-
-**2.0.0**
-
-- Updates to JavaTron 3.5.0.1
-- Uses TronGrid v2
-- Supports pre-approved proposals, to be set using env variables (see above)
-  - getMultiSignFee
-  - getUpdateAccountPermissionFee
-  - getTotalEnergyTargetLimit
-
-**1.2.8**
-
-- Supports pre-approved proposals, to be set using env variables (see above)
-  - allowSameTokenName
-  - allowDelegateResource
-  - allowTvmTransferTrc10
-
-**1.2.7**
-
-- Updates to JavaTron v3.2.2.
-- Supports events emitted by internal transactions.
-
-**1.2.6**
-
-- Uses JavaTron v3.2.1.2.
-- Adds a script to have info about the current version of Tron Quickstart and JavaTron.
-
-**1.2.5**
-
-- Uses JavaTron v3.2.1.1.
-
-**1.2.4**
-
-- Allow to see the version of the current image from `docker ps`.
-
-**1.2.3**
-
-- Add CORS to any /admin routes that returns JSON objects.
-
-**1.2.2**
-
-- Introduce compatibility with JavaTron 3.2. It requires TronBox >= 2.2.1, because JavaTron 3.2 requires the new parameter
-  `origin_energy_limit`.
-
----
-
-For more historic data, check the original repo at
-[https://github.com/tronprotocol/docker-tron-quickstart](https://github.com/tronprotocol/docker-tron-quickstart)
