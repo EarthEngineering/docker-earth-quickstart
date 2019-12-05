@@ -1,11 +1,11 @@
-const TronWeb = require('tronweb')
-const network = require('../config').network
+const EarthWeb = require("earthweb")
+const network = require("../config").network
 
 let instance
 
-module.exports = function () {
+module.exports = function() {
   if (!instance) {
-    instance = new TronWeb(network)
+    instance = new EarthWeb(network)
   }
   return instance
 }
