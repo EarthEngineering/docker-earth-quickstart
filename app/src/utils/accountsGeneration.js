@@ -1,14 +1,14 @@
-const _ = require('lodash')
-const fs = require('fs-extra')
-const path = require('path')
-const chalk = require('chalk')
-const wait = require('./wait')
-const deriveAccountsFromSeedAndOrMnemonic = require('./deriveAccountsFromSeedAndOrMnemonic')
-const config = require('../config')
+const _ = require("lodash")
+const fs = require("fs-extra")
+const path = require("path")
+const chalk = require("chalk")
+const wait = require("./wait")
+const deriveAccountsFromSeedAndOrMnemonic = require("./deriveAccountsFromSeedAndOrMnemonic")
+const config = require("../config")
 
-const isDev = process.platform === 'darwin'
+const isDev = process.platform === "darwin"
 
-const tronWebBuilder = require('../utils/tronWebBuilder')
+const tronWebBuilder = require("../utils/earthWebBuilder")
 let tronWeb
 let count = 1
 let done = false
@@ -18,7 +18,11 @@ let printed = false
 function waiting() {
   const env = config.getEnv()
   if (!printed) {
-    console.log(chalk.gray(`Waiting when nodes are ready to generate ${env.accounts} accounts...`))
+    console.log(
+      chalk.gray(
+        `Waiting when nodes are ready to generate ${env.accounts} accounts...`
+      )
+    )
     printed = true
   }
   if (!done) {
@@ -28,7 +32,6 @@ function waiting() {
 }
 
 async function accountsGeneration(options) {
-
   const env = config.getEnv()
 
   if (!options) {
@@ -39,12 +42,12 @@ async function accountsGeneration(options) {
 
   if (!defSet) {
     tronWeb = tronWebBuilder()
-    tronWeb.setDefaultBlock('latest')
+    tronWeb.setDefaultBlock("latest")
     setTimeout(waiting, 1000)
     defSet = true
   }
 
-  if (!await tronWeb.fullNode.isConnected()) {
+  if (!(await tronWeb.fullNode.isConnected())) {
     await wait(1)
     return await accountsGeneration()
   }
@@ -52,18 +55,18 @@ async function accountsGeneration(options) {
   done = true
   let accounts
 
-  const tmpDir = '/config'
-  const jsonPath = path.join(tmpDir, 'accounts.json')
+  const tmpDir = "/config"
+  const jsonPath = path.join(tmpDir, "accounts.json")
 
   if (!isDev && fs.existsSync(jsonPath)) {
-    accounts = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'))
+    accounts = JSON.parse(fs.readFileSync(jsonPath, "utf-8"))
 
     if (Array.isArray(accounts)) {
       // for retro-compatibility
       accounts = {
         privateKeys: accounts
       }
-    } else if (typeof accounts !== 'object') {
+    } else if (typeof accounts !== "object") {
       // wrong format
       accounts = null
     }
@@ -80,12 +83,14 @@ async function accountsGeneration(options) {
     }
     if (!isDev) {
       fs.ensureDirSync(tmpDir)
-      fs.writeFileSync(path.join(tmpDir, 'accounts.json'), JSON.stringify(accounts, null, 2))
+      fs.writeFileSync(
+        path.join(tmpDir, "accounts.json"),
+        JSON.stringify(accounts, null, 2)
+      )
     }
   }
 
   return Promise.resolve(accounts)
 }
-
 
 module.exports = accountsGeneration

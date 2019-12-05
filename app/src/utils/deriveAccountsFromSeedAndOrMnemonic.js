@@ -3,13 +3,13 @@
 // thanks to Trufflesuite/Ganache-core
 // https://github.com/trufflesuite/ganache-core/blob/develop/lib/statemanager.js
 
-const _ = require('lodash')
+const _ = require("lodash")
 const utils = require("ethereumjs-util")
 const seedrandom = require("seedrandom")
 const bip39 = require("bip39")
 const hdkey = require("ethereumjs-wallet/hdkey")
-const tronWebBuilder = require('../utils/tronWebBuilder')
-const config = require('../config')
+const earthWebBuilder = require("../utils/earthWebBuilder")
+const config = require("../config")
 
 function toHex(val) {
   if (typeof val === "string") {
@@ -37,7 +37,6 @@ function toHex(val) {
   return utils.addHexPrefix(val)
 }
 
-
 function randomBytes(length, rng) {
   let buf = []
 
@@ -49,19 +48,21 @@ function randomBytes(length, rng) {
 }
 
 function randomAlphaNumericString(length, rng) {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+  const alphabet =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
   let text = ""
 
   for (let i = 0; i < length; i++) {
-    text += alphabet.charAt(Math.floor((rng || Math.random)() * alphabet.length))
+    text += alphabet.charAt(
+      Math.floor((rng || Math.random)() * alphabet.length)
+    )
   }
 
   return text
 }
 
 async function deriveAccountsFromSeedAndOrMnemonic(options) {
-
   const env = config.getEnv()
 
   if (!options) {
@@ -71,12 +72,12 @@ async function deriveAccountsFromSeedAndOrMnemonic(options) {
   }
 
   if (options.addAccounts) {
-    for (let key of 'mnemonic,hdPath,seed,useDefaultPrivateKey'.split(',')) {
+    for (let key of "mnemonic,hdPath,seed,useDefaultPrivateKey".split(",")) {
       delete options[key]
     }
   }
 
-  const tronWeb = tronWebBuilder()
+  const tronWeb = earthWebBuilder()
 
   const total_accounts = options.accounts
 
@@ -87,7 +88,9 @@ async function deriveAccountsFromSeedAndOrMnemonic(options) {
 
   if (!mnemonic) {
     seed = seed || randomAlphaNumericString(10, seedrandom())
-    mnemonic = options.mnemonic || bip39.entropyToMnemonic(randomBytes(16, seedrandom(seed)).toString("hex"))
+    mnemonic =
+      options.mnemonic ||
+      bip39.entropyToMnemonic(randomBytes(16, seedrandom(seed)).toString("hex"))
   }
 
   const wallet = hdkey.fromMasterSeed(bip39.mnemonicToSeed(mnemonic))
@@ -96,7 +99,10 @@ async function deriveAccountsFromSeedAndOrMnemonic(options) {
 
   for (let i = 0; i < total_accounts; i++) {
     let acct = wallet.derivePath(hdPath + i)
-    let privateKey = acct.getWallet().getPrivateKey().toString('hex')
+    let privateKey = acct
+      .getWallet()
+      .getPrivateKey()
+      .toString("hex")
     if (!i && options.useDefaultPrivateKey) {
       privateKey = tronWeb.defaultPrivateKey
     }
@@ -110,6 +116,5 @@ async function deriveAccountsFromSeedAndOrMnemonic(options) {
     privateKeys
   })
 }
-
 
 module.exports = deriveAccountsFromSeedAndOrMnemonic
