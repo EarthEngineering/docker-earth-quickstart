@@ -1,7 +1,7 @@
 node_modules
-scripts/deploy_tron.sh
+scripts/deploy_earth.sh
 /tmp
-/tron-data
+/deploy_earth-data
 output-directory/
 jdk1.8.0_201/
 logs/

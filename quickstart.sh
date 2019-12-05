@@ -24,4 +24,4 @@ PRIVATE_NETWORK=yes pm2 start process.json)
 echo "Start the http proxy for dApps..."
 nohup scripts/accounts-generation.sh > /dev/null 2>&1 &
 
-node /tron/app
+node /earth/app

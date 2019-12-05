@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if [[ $(docker inspect tron | grep NetworkSettings) != "" ]]; then
-  docker rm -f tron
+if [[ $(docker inspect earth | grep NetworkSettings) != "" ]]; then
+  docker rm -f earth
 fi
 
 docker run -it --rm \
@@ -11,5 +11,5 @@ docker run -it --rm \
   -e "showBody=true" \
   -e "formatJson=true" \
   -e "preapprove=multiSignFee:1,allowMultiSign:1,updateAccountPermissionFee:1,totalEnergyTargetLimit:1" \
-  --name tron \
-  tronquickstart
+  --name earth \
+  earthquickstart

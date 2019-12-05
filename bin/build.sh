@@ -19,4 +19,4 @@ and pull the large files:
 
 fi
 
-docker build -t tronquickstart .
+docker build -t earthquickstart .

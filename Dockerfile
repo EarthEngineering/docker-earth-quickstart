@@ -4,12 +4,12 @@ FROM sullof/ubu18jdk8node10redis
 LABEL maintainer="Francesco Sullo <francesco@sullo.co>"
 
 # Prepare the work directory
-RUN mkdir -p tron/conf
-WORKDIR /tron
+RUN mkdir -p earth/conf
+WORKDIR /earth
 
 # Install proxy dependencies
-RUN mkdir /tron/app
-ADD app/package.json /tron/app/package.json
+RUN mkdir /earth/app
+ADD app/package.json /earth/app/package.json
 RUN cd app && npm install
 
 # Configures full node
@@ -34,8 +34,8 @@ ADD app/src app/src
 ADD scripts scripts
 RUN chmod +x scripts/accounts-generation.sh
 
-ADD tronWeb tronWeb
-RUN chmod +x tronWeb
+ADD earthWeb earthWeb
+RUN chmod +x earthWeb
 
 ADD pre-approve.sh pre-approve.sh
 ADD quickstart.sh quickstart
