@@ -296,37 +296,3 @@ curl localhost:9090/wallet/getnodeinfo
 ```
 
 and look for `codeVersion`.
-
----
-
-Firist install `earthbox` from npm.
-
-```
-npm install earthbox -g
-```
-
-Next clone the quickstart
-
-```
-git clone https://github.com/EarthEngineering/docker-earth-quickstart.git
-```
-
-Run the build script to have docker build an image
-
-```
-./bin/build.sh
-```
-
-Fire up your own private EARTH network!
-
-```
-./bin/run-simple.sh
-```
-
-This will generate 10 Accounts and give them each 10,000 regtest EARTH.
-
-![Addresses](https://i.imgur.com/Zt7cNPE.png "Addresses")
-
-It will also show the private key as well as the hd path and mnemonic in case you want to recreate these addresses later.
-
-![Addresses](https://i.imgur.com/NEVHF9W.png "Addresses")
