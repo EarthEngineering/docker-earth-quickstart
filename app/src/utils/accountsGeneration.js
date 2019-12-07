@@ -8,8 +8,8 @@ const config = require("../config")
 
 const isDev = process.platform === "darwin"
 
-const tronWebBuilder = require("../utils/earthWebBuilder")
-let tronWeb
+const earthWebBuilder = require("../utils/earthWebBuilder")
+let earthWeb
 let count = 1
 let done = false
 let defSet = false
@@ -41,13 +41,13 @@ async function accountsGeneration(options) {
   }
 
   if (!defSet) {
-    tronWeb = tronWebBuilder()
-    tronWeb.setDefaultBlock("latest")
+    earthWeb = earthWebBuilder()
+    earthWeb.setDefaultBlock("latest")
     setTimeout(waiting, 1000)
     defSet = true
   }
 
-  if (!(await tronWeb.fullNode.isConnected())) {
+  if (!(await earthWeb.fullNode.isConnected())) {
     await wait(1)
     return await accountsGeneration()
   }

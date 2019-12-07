@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
 const earthWebBuilder = require("./app/src/utils/earthWebBuilder")
-global.tronWeb = earthWebBuilder()
+global.earthWeb = earthWebBuilder()
 require("repl").start({})

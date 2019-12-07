@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker exec -it tron bash
+docker exec -it earth bash

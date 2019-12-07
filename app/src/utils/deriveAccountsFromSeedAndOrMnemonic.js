@@ -77,11 +77,11 @@ async function deriveAccountsFromSeedAndOrMnemonic(options) {
     }
   }
 
-  const tronWeb = earthWebBuilder()
+  const earthWeb = earthWebBuilder()
 
   const total_accounts = options.accounts
 
-  const hdPath = options.hdPath || "m/44'/195'/0'/0/"
+  const hdPath = options.hdPath || "m/44'/507'/0'/0/"
 
   let seed = options.seed
   let mnemonic = options.mnemonic
@@ -104,7 +104,7 @@ async function deriveAccountsFromSeedAndOrMnemonic(options) {
       .getPrivateKey()
       .toString("hex")
     if (!i && options.useDefaultPrivateKey) {
-      privateKey = tronWeb.defaultPrivateKey
+      privateKey = earthWeb.defaultPrivateKey
     }
     privateKeys.push(privateKey)
   }

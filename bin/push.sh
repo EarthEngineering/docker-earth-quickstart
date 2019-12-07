@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 version=`cat version`
-docker push trontools/quickstart:$version
-docker push trontools/quickstart:latest
+docker push earthengineering/quickstart:$version
+docker push earthengineering/quickstart:latest
