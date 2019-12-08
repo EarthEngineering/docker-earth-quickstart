@@ -28,7 +28,7 @@ async function getBalances() {
 
   for (let i = 0; i < privateKeys.length; i++) {
     let address = earthWeb.address.fromPrivateKey(privateKeys[i])
-    balances[k++] = await earthWeb.trx.getBalance(address)
+    balances[k++] = await earthWeb.earth.getBalance(address)
   }
   return Promise.resolve(balances)
 }
@@ -66,16 +66,16 @@ async function verifyAccountsBalance(options) {
     for (let i = 0; i < privateKeys.length; i++) {
       let address = earthWeb.address.fromPrivateKey(privateKeys[i])
       if (privateKeys[i] !== earthWeb.defaultPrivateKey && !trxSent[address]) {
-        let result = await earthWeb.trx.sendTransaction(
+        let result = await earthWeb.earth.sendTransaction(
           address,
-          earthWeb.toSun(amount)
+          earthWeb.toSol(amount)
         )
         if (result.result) {
           console.log(chalk.gray(`Sending ${amount} EARTH to ${address}`))
           trxSent[address] = true
         }
       } else if (!balances[i]) {
-        let balance = await earthWeb.trx.getBalance(address)
+        let balance = await earthWeb.earth.getBalance(address)
         if (balance > 0) {
           balances[i] = balance
           ready++
@@ -100,7 +100,7 @@ async function formatAccounts(balances, format) {
 
     formattedTestingAccounts += `(${i}) ${
       format === "hex" ? earthWeb.address.toHex(address) : address
-    } (${earthWeb.fromSun(balances[i])} EARTH)\n${
+    } (${earthWeb.fromSol(balances[i])} EARTH)\n${
       format === "all" ? "    " + earthWeb.address.toHex(address) + "\n" : ""
     }`
   }
