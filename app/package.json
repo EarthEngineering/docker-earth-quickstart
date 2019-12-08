@@ -22,6 +22,6 @@
     "morgan": "^1.9.1",
     "scrypt": "^6.0.3",
     "seedrandom": "^2.4.4",
-    "earthweb": "^0.2.2"
+    "earthweb": "^0.2.6"
   }
 }

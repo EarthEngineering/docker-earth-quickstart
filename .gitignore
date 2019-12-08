@@ -7,3 +7,6 @@ jdk1.8.0_201/
 logs/
 /jre
 .env
+conf/BlockParser.jar
+conf/eventron
+conf/FullNode.jar
