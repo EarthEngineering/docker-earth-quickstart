@@ -60,7 +60,7 @@ docker exec -it earth tail -f /earth/FullNode/logs/earth.log
 
 ### EARTHBox 2.1+ configuration
 
-Configure your `earthbox.js` file as:
+Configure your `earthcli.js` file as:
 
 ```
 module.exports = {
@@ -277,9 +277,9 @@ docker run -it -p 50051:50051 -p 50052:50052 \
 
 **The "SERVER_BUSY" error**
 
-Running EarthBox can put a lot of stress on the local network. If the FullNode is busy, it returns the "SERVER_BUSY" error. If it does, just repeat your command.
+Running EarthCli can put a lot of stress on the local network. If the FullNode is busy, it returns the "SERVER_BUSY" error. If it does, just repeat your command.
 
-### Latest version is `0.1.4`
+### Latest version is `0.1.3`
 
 To be updated, take a look at https://hub.docker.com/r/earthengineering/quickstart/tags/
 
