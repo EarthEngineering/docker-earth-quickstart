@@ -279,7 +279,7 @@ docker run -it -p 50051:50051 -p 50052:50052 \
 
 Running EarthBox can put a lot of stress on the local network. If the FullNode is busy, it returns the "SERVER_BUSY" error. If it does, just repeat your command.
 
-### Latest version is `0.1.3`
+### Latest version is `0.1.4`
 
 To be updated, take a look at https://hub.docker.com/r/earthengineering/quickstart/tags/
 
