@@ -33,7 +33,7 @@ async function getBalances() {
   return Promise.resolve(balances)
 }
 
-let trxSent = {}
+let earthSent = {}
 
 async function verifyAccountsBalance(options) {
   const env = config.getEnv()
@@ -65,14 +65,17 @@ async function verifyAccountsBalance(options) {
     console.log(chalk.gray(`(${count++}) Waiting for receipts...`))
     for (let i = 0; i < privateKeys.length; i++) {
       let address = earthWeb.address.fromPrivateKey(privateKeys[i])
-      if (privateKeys[i] !== earthWeb.defaultPrivateKey && !trxSent[address]) {
+      if (
+        privateKeys[i] !== earthWeb.defaultPrivateKey &&
+        !earthSent[address]
+      ) {
         let result = await earthWeb.earth.sendTransaction(
           address,
           earthWeb.toSol(amount)
         )
         if (result.result) {
           console.log(chalk.gray(`Sending ${amount} EARTH to ${address}`))
-          trxSent[address] = true
+          earthSent[address] = true
         }
       } else if (!balances[i]) {
         let balance = await earthWeb.earth.getBalance(address)

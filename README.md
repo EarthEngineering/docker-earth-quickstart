@@ -92,7 +92,7 @@ const earthWeb = new EarthWeb(
 
 ### Testing
 
-Earth Quickstart sets up accounts to be used for tests with EarthBox 2.1+ (10 accounts by default). Once the transactions are mined, the final output is printed out:
+Earth Quickstart sets up accounts to be used for tests with EarthCli 2.1+ (10 accounts by default). Once the transactions are mined, the final output is printed out:
 
 ```
 Available Accounts
