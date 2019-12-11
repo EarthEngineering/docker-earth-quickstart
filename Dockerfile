@@ -41,4 +41,4 @@ ADD pre-approve.sh pre-approve.sh
 ADD quickstart.sh quickstart
 RUN chmod +x quickstart
 
-CMD ["./quickstart", "v0.1.5"]
+CMD ["./quickstart", "v0.1.6"]

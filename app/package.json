@@ -1,6 +1,6 @@
 {
   "name": "earth-quickstart",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A minimalist proxy for a EARTH private network",
   "main": "index.js",
   "repository": "https://github.com/earthengineering/docker-earth-quickstart",
