@@ -1,6 +1,6 @@
 {
   "name": "spark",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A local and private EARTH network for development and testing",
   "main": "index.js",
   "repository": "https://github.com/earthengineering/spark",
