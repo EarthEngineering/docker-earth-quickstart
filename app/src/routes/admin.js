@@ -192,7 +192,7 @@ router.get("/temporary-accounts-generation", async function(req, res) {
 })
 
 router.get("/", function(req, res) {
-  res.send("Welcome to EARTH Quickstart " + require("../../package").version)
+  res.send("Welcome to EARTH Spark" + require("../../package").version)
 })
 
 module.exports = router

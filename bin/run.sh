@@ -12,4 +12,4 @@ docker run -it --rm \
   -e "formatJson=true" \
   -e "preapprove=multiSignFee:1,allowMultiSign:1,updateAccountPermissionFee:1,totalEnergyTargetLimit:1" \
   --name earth \
-  earthquickstart
+  spark

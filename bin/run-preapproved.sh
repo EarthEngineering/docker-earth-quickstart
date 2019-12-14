@@ -8,4 +8,4 @@ docker run -it --rm \
   -p 9090:9090 \
   -e "preapprove=maxCpuTimeOfOneTx:20" \
   --name earth \
-  earthquickstart
+  spark

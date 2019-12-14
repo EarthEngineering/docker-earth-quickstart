@@ -1,4 +1,4 @@
-# Proxy app for EARTH Quickstart
+# Proxy app for EARTH Spark
 
 This folder's copied into the image, during the build, and runs inside the image.
 
