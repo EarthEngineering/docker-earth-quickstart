@@ -58,7 +58,7 @@ To see the logs of the full node you can execute
 docker exec -it earth tail -f /earth/FullNode/logs/earth.log
 ```
 
-### EARTHBox 2.1+ configuration
+### EARTHBox configuration
 
 Configure your `earthcli.js` file as:
 
@@ -92,7 +92,7 @@ const earthWeb = new EarthWeb(
 
 ### Testing
 
-Earth Spark sets up accounts to be used for tests with EarthCli 2.1+ (10 accounts by default). Once the transactions are mined, the final output is printed out:
+Spark sets up accounts to be used for tests with EarthCli (10 accounts by default). Once the transactions are mined, the final output is printed out:
 
 ```
 Available Accounts
