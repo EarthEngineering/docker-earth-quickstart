@@ -11,4 +11,4 @@ docker run -it --rm \
   -e "showBody=true" \
   -e "formatJson=true" \
   --name earth \
-  earthengineering/quickstart:2.0.15
+  earthengineering/spark:0.1.7

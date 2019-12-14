@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # This script is here to support the development.
-# If you like to use this with the actual image replace spark with earthengineering/quickstart
+# If you like to use this with the actual image replace spark with earthengineering/spark
 
 (
 

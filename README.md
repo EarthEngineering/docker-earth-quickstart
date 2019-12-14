@@ -1,4 +1,4 @@
-# Earth Quickstart (Docker image)
+# Earth Spark (Docker image)
 
 **The purpose of it is to set up a complete private network for EARTH development.**
 
@@ -13,7 +13,7 @@ The image exposes:
 **Pull the image using docker:**
 
 ```
-docker pull earthengineering/quickstart
+docker pull earthengineering/spark
 ```
 
 **Run the container:**
@@ -23,7 +23,7 @@ docker run -it \
   -p 9090:9090 \
   --rm \
   --name earth \
-  earthengineering/quickstart
+  earthengineering/spark
 ```
 
 Notice the `--rm` option automatically removes the container after it exits. This is very important because the container cannot be restarted, it MUST be run from scratch to correctly configure the environment.
@@ -38,9 +38,9 @@ You should see something like this:
 
 ```
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.0  0.0  20044  1900 pts/0    Ss+  01:42   0:00 bash ./quickstart v2.0.0
+root         1  0.0  0.0  20044  1900 pts/0    Ss+  01:42   0:00 bash ./spark v2.0.0
 root        13  0.2  0.0  50148  1740 pts/0    Sl+  01:42   0:00 redis-server *:6379
-root        15  0.0  0.0  20044    40 pts/0    S+   01:42   0:00 bash ./quickstart v2.0.0
+root        15  0.0  0.0  20044    40 pts/0    S+   01:42   0:00 bash ./spark v2.0.0
 root        16 11.5 19.2 5277964 393692 pts/0  Sl+  01:42   0:31 java -jar FullNode.jar -c fullnode.conf --witness
 root        43  0.1  1.8 930932 37456 ?        Ssl  01:42   0:00 PM2 v3.3.1: God Daemon (/root/.pm2)
 root        54  0.2  2.6 939316 54880 ?        Ssl  01:42   0:00 /earth/eventron/eventron
@@ -92,7 +92,7 @@ const earthWeb = new EarthWeb(
 
 ### Testing
 
-Earth Quickstart sets up accounts to be used for tests with EarthCli 2.1+ (10 accounts by default). Once the transactions are mined, the final output is printed out:
+Earth Spark sets up accounts to be used for tests with EarthCli 2.1+ (10 accounts by default). Once the transactions are mined, the final output is printed out:
 
 ```
 Available Accounts
@@ -130,7 +130,7 @@ Base HD Path:  m/44'/60'/0'/0/{account_index}
 
 ```
 
-#### Quickstart options:
+#### Spark options:
 
 Use `-e` flag to pass environmental variables to the docker.
 Example:
@@ -141,13 +141,13 @@ docker run -it \
   --rm \
   --name earth \
   -e "accounts=20" \
-  earthengineering/quickstart
+  earthengineering/spark
 ```
 
 **List of options:**
 
 - `accounts=12` sets the number of generated accounts
-- `useDefaultPrivateKey=true` tells Quickstart to use the default account as `accounts[0]`
+- `useDefaultPrivateKey=true` tells Spark to use the default account as `accounts[0]`
 - `mnemonic=wrong bit chicken kitchen rat` uses a specified mnemonic
 - `defaultBalance=100000` sets the initial balance for the generated accounts (in the example to 100,000 EARTH)
 - `seed=ushwe63hgeWUS` sets the seed to be used to generate the mnemonic (if none is passed)
@@ -165,7 +165,7 @@ docker run -it \
   --rm \
   --name earth \
   -e "preapprove=multiSignFee:1,allowMultiSign:1" \
-  earthengineering/quickstart
+  earthengineering/spark
 ```
 
 For a complete list of option proposals check out https://www.earth.engineering. Note that you remove the "get" part of this chain parameter and lowercase the first character. This allows you to directly edit these parameters.
@@ -231,10 +231,10 @@ if [[ ! -d "accounts-data" ]]; then mkdir accounts-data; fi
 docker run -it -p 9090:9090 \
   --name earth \
   -v $PWD/accounts-data:/config \
-  earthengineering/quickstart
+  earthengineering/spark
 ```
 
-If `accounts-data/accounts.json` exists, Earth Quickstart will use it each time it runs. If you need specific addresses, you can edit `accounts.json`, put your own private keys in the `privateKeys` array, and run the container.
+If `accounts-data/accounts.json` exists, Earth Spark will use it each time it runs. If you need specific addresses, you can edit `accounts.json`, put your own private keys in the `privateKeys` array, and run the container.
 
 #### Logging
 
@@ -270,7 +270,7 @@ If you are running [Earth Wallet-cli](https://github.com/earthengineering/wallet
 ```
 docker run -it -p 50051:50051 -p 50052:50052 \
   --name earth \
-  earthengineering/quickstart
+  earthengineering/spark
 ```
 
 ### Known issues
@@ -281,7 +281,7 @@ Running EarthCli can put a lot of stress on the local network. If the FullNode i
 
 ### Latest version is `0.1.7`
 
-To be updated, take a look at https://hub.docker.com/r/earthengineering/quickstart/tags/
+To be updated, take a look at https://hub.docker.com/r/earthengineering/spark/tags/
 
 You can see which version you currently running executing
 
@@ -289,7 +289,7 @@ You can see which version you currently running executing
 docker ps
 ```
 
-If you want also to know which version of JavaEarth is used by Earth Quickstart, run
+If you want also to know which version of JavaEarth is used by Earth spark, run
 
 ```
 curl localhost:9090/wallet/getnodeinfo
