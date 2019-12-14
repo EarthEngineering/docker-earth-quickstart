@@ -8,9 +8,8 @@ nohup redis-server > /dev/null 2>&1 &
 
 (cd FullNode && nohup java -jar FullNode.jar -c fullnode.conf --witness >/dev/null 2>&1 &)
 
-# TODO - SECRET should be TNSpckEZhGfZ4ryidHG2fYWMARLpZ6U139
 # run eventron
-(cd eventron && SECRET=TUS9spz2WWzWJS6LqGne9ENNZ8ppFRcoHE \
+(cd eventron && SECRET=TNSpckEZhGfZ4ryidHG2fYWMARLpZ6U139 \
 REDISDBID=0 \
 REDISHOSTM=127.0.0.1 \
 REDISHOST=127.0.0.1 \
