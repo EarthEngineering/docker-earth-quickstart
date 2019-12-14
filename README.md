@@ -279,7 +279,7 @@ docker run -it -p 50051:50051 -p 50052:50052 \
 
 Running EarthCli can put a lot of stress on the local network. If the FullNode is busy, it returns the "SERVER_BUSY" error. If it does, just repeat your command.
 
-### Latest version is `0.1.7`
+### Latest version is `0.1.8`
 
 To be updated, take a look at https://hub.docker.com/r/earthengineering/spark/tags/
 
