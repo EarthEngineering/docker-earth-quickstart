@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # This script is here to support the development.
-# If you like to use this with the actual image replace earthquickstart with earthengineering/quickstart
+# If you like to use this with the actual image replace spark with earthengineering/quickstart
 
 (
 
@@ -14,5 +14,5 @@ fi
 docker run -it -p 9090:9090 \
   --name earth \
   -v $PWD/earth-data:/config \
-  earthquickstart
+  spark
 )

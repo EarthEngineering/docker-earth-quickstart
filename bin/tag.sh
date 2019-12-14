@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker tag earthquickstart earthengineering/quickstart:$1
-docker tag earthquickstart earthengineering/quickstart:latest
+docker tag spark earthengineering/spark:$1
+docker tag spark earthengineering/spark:latest

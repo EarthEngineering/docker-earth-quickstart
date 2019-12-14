@@ -1,4 +1,4 @@
-# EARTH Quickstart
+# EARTH Spark
 
 FROM sullof/ubu18jdk8node10redis
 LABEL maintainer="Gabriel Cardona <gabriel.earth.engineering@gmail.com>"
@@ -38,7 +38,7 @@ ADD earthWeb earthWeb
 RUN chmod +x earthWeb
 
 ADD pre-approve.sh pre-approve.sh
-ADD quickstart.sh quickstart
-RUN chmod +x quickstart
+ADD spark.sh spark
+RUN chmod +x spark
 
-CMD ["./quickstart", "v0.1.6"]
+CMD ["./spark", "v0.1.6"]

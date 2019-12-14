@@ -160,9 +160,6 @@ const n = "\n"
 
 console.log(
   n,
-  chalk.blue(
-    "EARTH Quickstart listening on",
-    chalk.bold("http://127.0.0.1:9090")
-  ),
+  chalk.blue("EARTH Spark listening on", chalk.bold("http://127.0.0.1:9090")),
   n
 )

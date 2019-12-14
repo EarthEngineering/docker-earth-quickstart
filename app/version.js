@@ -1,6 +1,6 @@
 console.log(
   "\n\n------------------------------" +
-    "\n\nEARTH Quickstart v" +
+    "\n\nEARTH Spark v" +
     require("./package").version +
     "\n\n"
 )

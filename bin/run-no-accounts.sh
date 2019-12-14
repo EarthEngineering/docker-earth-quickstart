@@ -10,4 +10,4 @@ docker run -it \
   -e "useDefaultPrivateKey=true" \
   -e "accounts=1" \
   --name earth \
-  earthquickstart
+  spark
