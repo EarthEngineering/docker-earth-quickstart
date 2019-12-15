@@ -1,6 +1,6 @@
 # Earth Spark (Docker image)
 
-**The purpose of it is to set up a complete private network for EARTH development.**
+Spark is a private and local EARTH network for development and testing. Fire up your EARTH development environment with Spark! ✨🔥
 
 The image exposes:
 
@@ -13,7 +13,7 @@ The image exposes:
 **Pull the image using docker:**
 
 ```
-docker pull earthengineering/spark
+docker pull earthengineering/spark:latest
 ```
 
 **Run the container:**
@@ -23,7 +23,7 @@ docker run -it \
   -p 9090:9090 \
   --rm \
   --name earth \
-  earthengineering/spark
+  earthengineering/spark:latest
 ```
 
 Notice the `--rm` option automatically removes the container after it exits. This is very important because the container cannot be restarted, it MUST be run from scratch to correctly configure the environment.
@@ -58,7 +58,7 @@ To see the logs of the full node you can execute
 docker exec -it earth tail -f /earth/FullNode/logs/earth.log
 ```
 
-### EARTHBox configuration
+### EarthCli configuration
 
 Configure your `earthcli.js` file as:
 
