@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $(docker inspect tearthron | grep NetworkSettings) != "" ]]; then
+if [[ $(docker inspect earth | grep NetworkSettings) != "" ]]; then
   docker rm -f earth
 fi
 

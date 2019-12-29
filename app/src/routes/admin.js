@@ -143,7 +143,7 @@ function setCors(res) {
 
 router.get("/healthcheck", async function(req, res) {
   logRouter("healthcheck")
-  res.set("Content-Type", "text/plain").send("Good to go")
+  res.set("Content-Type", "text/plain").send("Good to go\n")
 })
 
 router.get("/accounts", async function(req, res) {

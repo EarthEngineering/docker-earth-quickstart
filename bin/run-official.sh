@@ -11,4 +11,4 @@ docker run -it --rm \
   -e "showBody=true" \
   -e "formatJson=true" \
   --name earth \
-  earthengineering/spark:0.1.7
+  earthengineering/spark:latest
