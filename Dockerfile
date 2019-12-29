@@ -1,7 +1,9 @@
 # EARTH Spark
 
-FROM sullof/ubu18jdk8node10redis
+FROM earthengineering/ubu18jdk8node10redis
 LABEL maintainer="Gabriel Cardona <gabriel.earth.engineering@gmail.com>"
+LABEL description="A private EARTH network for development and testing"
+LABEL url="https://www.earth.engineering"
 
 # Prepare the work directory
 RUN mkdir -p earth/conf

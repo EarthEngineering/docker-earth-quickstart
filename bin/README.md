@@ -4,7 +4,7 @@
 
 `build.sh` builds the local image `spark`.
 
-`run.sh` runs `spark` generating a `earth` container on ports 8090, 8091 and 8092.
+`run.sh` runs `spark` generating an `earth` container on ports 8090, 8091 and 8092.
 
 `run-persistent.sh` runs `spark` using local folders for data persistence, generating a `earth` container.
 

@@ -151,7 +151,7 @@ docker run -it \
 - `mnemonic=wrong bit chicken kitchen rat` uses a specified mnemonic
 - `defaultBalance=100000` sets the initial balance for the generated accounts (in the example to 100,000 EARTH)
 - `seed=ushwe63hgeWUS` sets the seed to be used to generate the mnemonic (if none is passed)
-- `hdPath=m/44'/507'/0'/0` sets a custom bit39 hdPath. Defaults to `507'`
+- `hdPath=m/44'/507'/0'/0` sets a custom bit39 hdPath. Defaults to `m/44'/507'/0'/0`
 - `formatJson=true` formats the output
 - `preapprove=...` pre approved proposals (see below for more help)
 
@@ -168,7 +168,7 @@ docker run -it \
   earthengineering/spark
 ```
 
-For a complete list of option proposals check out https://www.earth.engineering. Note that you remove the "get" part of this chain parameter and lowercase the first character. This allows you to directly edit these parameters.
+For a complete list of option proposals check out `await earthweb.earth.getChainParameters()`. Note that you remove the "get" part of this chain parameter and lowercase the first character. This allows you to directly edit these parameters.
 
 #### Available accounts
 

@@ -141,6 +141,11 @@ function setCors(res) {
   return res
 }
 
+router.get("/healthcheck", async function(req, res) {
+  logRouter("healthcheck")
+  res.set("Content-Type", "text/plain").send("Good to go")
+})
+
 router.get("/accounts", async function(req, res) {
   logRouter("accounts")
   const balances = await getBalances()

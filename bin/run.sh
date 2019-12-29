@@ -6,7 +6,7 @@ fi
 
 docker run -it --rm \
   -p 9090:9090 \
-  -e "defaultBalance=100000" \
+  -e "defaultBalance=1000000" \
   -e "showQueryString=true" \
   -e "showBody=true" \
   -e "formatJson=true" \
