@@ -43,4 +43,4 @@ ADD pre-approve.sh pre-approve.sh
 ADD spark.sh spark
 RUN chmod +x spark
 
-CMD ["./spark", "v0.1.8"]
+CMD ["./spark", "v0.1.9"]
