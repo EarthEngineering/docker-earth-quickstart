@@ -33,8 +33,8 @@ ADD conf/eventron eventron/eventron
 ADD app/index.js app/index.js
 ADD app/version.js app/version.js
 ADD app/src app/src
-ADD scripts scripts
-RUN chmod +x scripts/accounts-generation.sh
+ADD bin bin
+RUN chmod +x bin/accounts-generation.sh
 
 ADD earthWeb earthWeb
 RUN chmod +x earthWeb
@@ -43,4 +43,4 @@ ADD pre-approve.sh pre-approve.sh
 ADD spark.sh spark
 RUN chmod +x spark
 
-CMD ["./spark", "v0.1.10"]
+CMD ["./spark", "v0.1.11"]
